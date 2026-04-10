@@ -1,8 +1,10 @@
 import { useNavigation } from '../../hooks/useNavigation';
+import { useUser } from '../../context/user-context';
 import UserAvatar from '../../assets/user.svg';
 
 function ProfileScreen() {
   const { goToChat, goToSplash, goToPreferences } = useNavigation();
+  const { userData } = useUser();
 
   const handleLogout = () => {
     // Logout: redireciona para a tela inicial
@@ -29,8 +31,8 @@ function ProfileScreen() {
           <img src={UserAvatar} alt="User Avatar" className="profile-avatar" />
           <span className="status-indicator"></span>
         </div>
-        <h2 className="profile-username">Tom Hillson</h2>
-        <p className="profile-email">Tomhill@mail.com</p>
+        <h2 className="profile-username">{userData.fullName}</h2>
+        <p className="profile-email">{userData.email}</p>
       </div>
 
       {/* Menu Options */}

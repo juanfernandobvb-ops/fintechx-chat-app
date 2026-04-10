@@ -14,9 +14,9 @@
   align-items: center;
   justify-content: center;
 
-  // Mobile: remover fundo e centralização
+  // Mobile: manter fundo branco e ocupar tela toda
   @media (max-width: $mobile) {
-    background-color: transparent;
+    background-color: $white;
     align-items: stretch;
     justify-content: stretch;
   }
@@ -51,6 +51,7 @@ body {
   padding: 0;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   color: $gray-800;
+  background-color: $white;
 }
 
 #root {

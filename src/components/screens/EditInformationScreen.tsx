@@ -1,16 +1,31 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigation } from '../../hooks/useNavigation';
+import { useUser } from '../../context/user-context';
 
 function EditInformationScreen() {
   const { goBack } = useNavigation();
+  const { userData, updateUserData } = useUser();
+  
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  // Carregar dados atuais quando o componente montar
+  useEffect(() => {
+    setFullName(userData.fullName);
+    setEmail(userData.email);
+  }, [userData]);
+
   const handleSaveChanges = () => {
-    // Implementar lógica de salvar alterações
-    console.log('Saving changes:', { fullName, email, password });
-    // Após salvar, voltar para a tela anterior
+    // Salvar apenas nome e email (senha é opcional)
+    updateUserData({
+      fullName: fullName.trim() || userData.fullName,
+      email: email.trim() || userData.email,
+    });
+    
+    console.log('Changes saved:', { fullName, email });
+    
+    // Voltar para a tela anterior
     goBack();
   };
 
