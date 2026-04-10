@@ -1,0 +1,171 @@
+@import './variables.scss';
+
+// ========================================
+// PREFERENCES SCREEN
+// ========================================
+
+.preferences-screen {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: $white;
+  overflow-y: auto;
+  padding-bottom: 70px; // Espaço para bottom navigation
+}
+
+// ========================================
+// HEADER
+// ========================================
+
+.preferences-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-sm $spacing-md;
+  border-bottom: 1px solid #e0e0e0;
+  position: sticky;
+  top: 0;
+  background-color: $white;
+  z-index: 10;
+
+  .back-button {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $gray-800;
+    transition: $transition-fast;
+
+    &:hover {
+      color: $primary-color;
+      transform: translateX(-2px);
+    }
+
+    &:active {
+      transform: translateX(-4px);
+    }
+  }
+
+  .preferences-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: $gray-900;
+    margin: 0;
+  }
+
+  .header-spacer {
+    width: 40px; // Para manter o título centralizado
+  }
+}
+
+// ========================================
+// PREFERENCES LIST
+// ========================================
+
+.preferences-list {
+  display: flex;
+  flex-direction: column;
+  padding: $spacing-md;
+  gap: 0;
+}
+
+.preference-item {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-md 0;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #f5f5f5;
+  cursor: pointer;
+  transition: $transition-fast;
+  text-align: left;
+  width: 100%;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background-color: rgba($primary-color, 0.02);
+    padding-left: $spacing-xs;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.preference-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background-color: #f8f8f8;
+  border-radius: 12px;
+  color: $gray-900;
+  flex-shrink: 0;
+  transition: $transition-fast;
+
+  .preference-item:hover & {
+    background-color: #f0f0f0;
+    color: $primary-color;
+  }
+}
+
+.preference-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.preference-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: $gray-900;
+  margin: 0;
+}
+
+.preference-subtitle {
+  font-size: 0.875rem;
+  color: $gray-600;
+  margin: 0;
+  line-height: 1.4;
+}
+
+// ========================================
+// RESPONSIVE
+// ========================================
+
+@media (max-width: 600px) {
+  .preferences-header {
+    padding: $spacing-sm;
+  }
+
+  .preferences-list {
+    padding: $spacing-sm;
+  }
+
+  .preference-item {
+    padding: $spacing-sm 0;
+  }
+
+  .preference-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .preference-title {
+    font-size: 0.9375rem;
+  }
+
+  .preference-subtitle {
+    font-size: 0.8125rem;
+  }
+}

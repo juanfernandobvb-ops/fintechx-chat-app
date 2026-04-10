@@ -1,0 +1,90 @@
+// ========================================
+// ESTILOS PRINCIPAIS DA APLICAÇÃO
+// ========================================
+
+@use './variables' as *;
+
+// App Container Principal
+.app-container {
+  min-height: 100vh;
+  background-color: #c1c1c1;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // Mobile: remover fundo e centralização
+  @media (max-width: $mobile) {
+    background-color: transparent;
+    align-items: stretch;
+    justify-content: stretch;
+  }
+}
+
+// Container Mobile Simulado
+.app-mobile-container {
+  width: 414px;
+  height: 896px;
+  border-radius: 18px;
+  background-color: $white;
+  position: relative;
+  overflow: hidden;
+  box-shadow: $shadow-lg;
+
+  // Mobile: ocupar tela toda
+  @media (max-width: $mobile) {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+// Reset e Base
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: $gray-800;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+// Utilities
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+}
+
+.hidden {
+  display: none;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+// Responsividade
+@media (max-width: $mobile) {
+  .container {
+    padding: 0 $spacing-sm;
+  }
+}

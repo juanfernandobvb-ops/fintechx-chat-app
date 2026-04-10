@@ -1,0 +1,301 @@
+// ========================================
+// COMPONENTES REUTILIZÁVEIS
+// ========================================
+
+@use "./variables" as *;
+@use "sass:color";
+@use './health-screen.scss';
+
+// Animações
+@keyframes rotate-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Tela base
+.screen {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: $spacing-xl;
+  text-align: center;
+
+  h1 {
+    color: $gray-900;
+    margin-bottom: $spacing-sm;
+  }
+
+  p {
+    color: color.adjust($gray-800, $lightness: 20%);
+  }
+}
+
+// Splash Screen
+.splash-screen {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-xl;
+  cursor: pointer;
+  transition: background-color $transition-fast;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+
+  .splash-logo {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      max-width: 120px;
+      max-height: 120px;
+      width: auto;
+      height: auto;
+      animation: rotate-slow 3s linear infinite;
+    }
+  }
+
+  .splash-footer {
+    text-align: center;
+    margin-bottom: $spacing-xl;
+
+    .splash-title {
+      font-size: 2rem;
+      font-weight: 600;
+      color: $gray-900;
+      margin: 0 0 $spacing-xs 0;
+    }
+
+    .splash-version {
+      font-size: 1rem;
+      color: color.adjust($gray-800, $lightness: 20%);
+      margin: 0;
+      font-weight: 400;
+    }
+  }
+}
+
+// OnboardingScreen Styles
+.onboarding-screen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f7f8fa;
+
+  .onboarding-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px 24px;
+    height: 60px;
+
+    .step-indicator {
+      font-size: 14px;
+      font-weight: 500;
+      color: $gray-800;
+    }
+
+    .skip-text {
+      color: #d7d7d7;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      width: 100%;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 2rem;
+      margin-top: 2rem;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  .robot-section {
+    height: 500px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f7f8fa;
+    .robot-image {
+      /* Sombra customizada: bem visível nas laterais e embaixo */
+      box-shadow:
+        0px 40px 60px -8px rgba(49, 48, 48, 0.747),
+        /* sombra forte embaixo */ 0px 0px 48px 0px rgba(49, 48, 48, 0.747),
+        /* sombra ampla nas laterais */ 0px 0px 0px 0px rgba(255, 255, 255, 0); /* nada no topo */
+      border-radius: 9%;
+    }
+  }
+  .slide-indicators {
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    gap: 10px;
+
+    .dot {
+      width: 9.09px;
+      height: 9.09px;
+      border-radius: 50%;
+      background-color: #23262f80;
+      transition: all 0.2s ease;
+
+      &.active {
+        background-color: #141718;
+        border: 2px solid #fff;
+        width: 17.68px;
+        height: 17.68px;
+        border-radius: 50%;
+        box-shadow: 0 0 0 1px #141718;
+      }
+    }
+  }
+
+  .content-section {
+    padding: 0 24px 40px;
+    text-align: center;
+
+    .onboarding-title {
+      font-size: 33.9px;
+      font-weight: 700;
+      color: #23262f;
+      padding: 0 20px;
+    }
+
+    .onboarding-subtitle {
+      font-size: 16px;
+      color: #8e9295;
+      line-height: 1.5;
+      margin-bottom: 40px;
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .navigation-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      .navigation-controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 8px 32px 0 rgba(44, 45, 48, 0.1);
+        padding: 0 24px;
+        height: 56px;
+        width: 150px;
+        position: relative;
+
+        .nav-btn {
+          width: 48px;
+          height: 48px;
+          border-radius: 12px;
+          border: none;
+          background: transparent;
+          color: #23262f;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 22px;
+          transition:
+            background 0.2s,
+            color 0.2s;
+          margin: 0 8px;
+
+          &:disabled {
+            color: #b1b5c3;
+            cursor: not-allowed;
+          }
+          &:not(:disabled):hover {
+            background: #f4f5f6;
+          }
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          left: 50%;
+          top: 16px;
+          width: 1px;
+          height: 24px;
+          background: #e6e8ec;
+          transform: translateX(-50%);
+          z-index: 1;
+        }
+      }
+    }
+  }
+
+  // Mobile responsivity
+  @media (max-width: 768px) {
+    .robot-section {
+      .robot-container {
+        width: 240px;
+        height: 240px;
+
+        &::before {
+          width: 300px;
+          height: 300px;
+        }
+      }
+    }
+
+    .content-section {
+      .onboarding-title {
+        font-size: 24px;
+      }
+
+      .onboarding-subtitle {
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+// ========================================
+// CHAT SCREEN
+// ========================================
+
+.chat-screen {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: $white;
+  padding-bottom: 70px; // Espaço para bottom navigation
+  overflow-y: auto;
+  padding: $spacing-lg;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  h1 {
+    color: $gray-900;
+    margin-bottom: $spacing-sm;
+  }
+
+  p {
+    color: $gray-600;
+  }
+}
+

@@ -1,0 +1,46 @@
+// ========================================
+// VARIÁVEIS GLOBAIS
+// ========================================
+
+// Cores principais
+$black: #000000;
+$white: #ffffff;
+$gray-100: #f7fafc;
+$gray-800: #2d3748;
+$gray-900: #1a202c;
+
+// Cores FinTech
+$fintech-dark: #1a1a2e;
+$fintech-purple: #16213e;
+$fintech-accent: #0f3460;
+$fintech-blue: #3b82f6;
+
+// Cores do projeto
+$primary-color: #8b5cf6;
+$secondary-color: #6366f1;
+$gray-600: #6b7280;
+
+// Breakpoints
+$mobile: 768px;
+$tablet: 1024px;
+$desktop: 1200px;
+
+// Espaçamentos
+$spacing-xs: 0.5rem;   // 8px
+$spacing-sm: 1rem;     // 16px
+$spacing-md: 1.5rem;   // 24px
+$spacing-lg: 2rem;     // 32px
+$spacing-xl: 3rem;     // 48px
+
+// Bordas
+$border-radius: 0.5rem;
+$border-radius-lg: 1rem;
+
+// Sombras
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+// Transições
+$transition-fast: 0.15s ease-in-out;
+$transition-normal: 0.3s ease-in-out;
