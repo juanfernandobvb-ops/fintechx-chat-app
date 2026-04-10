@@ -118,37 +118,24 @@
 
 // OnboardingScreen Styles
 .onboarding-screen {
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   background-color: #f7f8fa;
+  position: relative;
 
+  // Header com Skip
   .onboarding-header {
+    padding: 24px;
     display: flex;
     justify-content: flex-end;
-    align-items: center;
-    padding: 20px 24px;
-    height: 60px;
-
-    .step-indicator {
-      font-size: 14px;
-      font-weight: 500;
-      color: $gray-800;
-    }
 
     .skip-text {
       color: #d7d7d7;
       font-size: 18px;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s ease;
-      width: 100%;
-      height: 35px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      padding-right: 2rem;
-      margin-top: 2rem;
+      transition: opacity 0.2s;
 
       &:hover {
         opacity: 0.7;
@@ -156,148 +143,121 @@
     }
   }
 
-  .robot-section {
-    height: 500px;
-    width: 100%;
+  // Container da Imagem
+  .onboarding-image-container {
+    height: 380px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f7f8fa;
-    .robot-image {
-      /* Sombra customizada: bem visível nas laterais e embaixo */
+    padding: 0 24px;
+
+    .onboarding-image {
+      max-width: 100%;
+      max-height: 340px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 16px;
       box-shadow:
-        0px 40px 60px -8px rgba(49, 48, 48, 0.747),
-        /* sombra forte embaixo */ 0px 0px 48px 0px rgba(49, 48, 48, 0.747),
-        /* sombra ampla nas laterais */ 0px 0px 0px 0px rgba(255, 255, 255, 0); /* nada no topo */
-      border-radius: 9%;
+        0px 20px 40px -8px rgba(49, 48, 48, 0.3),
+        0px 0px 24px 0px rgba(49, 48, 48, 0.2);
     }
   }
-  .slide-indicators {
-    height: 20px;
+
+  // Dots de navegação
+  .onboarding-dots {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 2rem;
     gap: 10px;
+    padding: 24px 0;
 
     .dot {
-      width: 9.09px;
-      height: 9.09px;
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
-      background-color: #23262f80;
+      background-color: rgba(35, 38, 47, 0.3);
       transition: all 0.2s ease;
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgba(35, 38, 47, 0.6);
+        transform: scale(1.2);
+      }
 
       &.active {
         background-color: #141718;
         border: 2px solid #fff;
-        width: 17.68px;
-        height: 17.68px;
-        border-radius: 50%;
+        width: 18px;
+        height: 18px;
         box-shadow: 0 0 0 1px #141718;
       }
     }
   }
 
-  .content-section {
-    padding: 0 24px 40px;
+  // Texto do slide
+  .onboarding-text {
+    flex: 1;
+    padding: 0 32px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 
     .onboarding-title {
-      font-size: 33.9px;
+      font-size: 30px;
       font-weight: 700;
       color: #23262f;
-      padding: 0 20px;
+      margin: 0 0 16px 0;
+      line-height: 1.2;
     }
 
     .onboarding-subtitle {
-      font-size: 16px;
+      font-size: 15px;
       color: #8e9295;
       line-height: 1.5;
-      margin-bottom: 40px;
-      max-width: 300px;
+      margin: 0;
+      max-width: 320px;
       margin-left: auto;
       margin-right: auto;
     }
-
-    .navigation-container {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-      .navigation-controls {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 0;
-        background: #fff;
-        border-radius: 16px;
-        box-shadow: 0 8px 32px 0 rgba(44, 45, 48, 0.1);
-        padding: 0 24px;
-        height: 56px;
-        width: 150px;
-        position: relative;
-
-        .nav-btn {
-          width: 48px;
-          height: 48px;
-          border-radius: 12px;
-          border: none;
-          background: transparent;
-          color: #23262f;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 22px;
-          transition:
-            background 0.2s,
-            color 0.2s;
-          margin: 0 8px;
-
-          &:disabled {
-            color: #b1b5c3;
-            cursor: not-allowed;
-          }
-          &:not(:disabled):hover {
-            background: #f4f5f6;
-          }
-        }
-
-        &::before {
-          content: "";
-          position: absolute;
-          left: 50%;
-          top: 16px;
-          width: 1px;
-          height: 24px;
-          background: #e6e8ec;
-          transform: translateX(-50%);
-          z-index: 1;
-        }
-      }
-    }
   }
 
-  // Mobile responsivity
-  @media (max-width: 768px) {
-    .robot-section {
-      .robot-container {
-        width: 240px;
-        height: 240px;
+  // Navegação (botões prev/next)
+  .onboarding-navigation {
+    padding: 32px 24px 40px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
 
-        &::before {
-          width: 300px;
-          height: 300px;
-        }
+    .nav-btn {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      border: none;
+      background: #fff;
+      color: #23262f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 4px 16px rgba(44, 45, 48, 0.1);
+
+      &:hover:not(:disabled) {
+        background: #f4f5f6;
+        transform: scale(1.05);
       }
-    }
 
-    .content-section {
-      .onboarding-title {
-        font-size: 24px;
+      &:active:not(:disabled) {
+        transform: scale(0.95);
       }
 
-      .onboarding-subtitle {
-        font-size: 15px;
+      &:disabled {
+        color: #b1b5c3;
+        cursor: not-allowed;
+        opacity: 0.5;
       }
     }
   }
