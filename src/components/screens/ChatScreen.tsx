@@ -17,6 +17,7 @@ function ChatScreen() {
   const [input, setInput] = useState("");
   const [chatStarted, setChatStarted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [showCopiedMessage, setShowCopiedMessage] = useState(false);
   const chatbotService = useMemo(() => createChatbotService(), []);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -106,7 +107,8 @@ function ChatScreen() {
   const handleCopy = useCallback((text: string) => {
     navigator.clipboard.writeText(text)
       .then(() => {
-        alert("Texto copiado!");
+        setShowCopiedMessage(true);
+        setTimeout(() => setShowCopiedMessage(false), 2000);
       })
       .catch((err) => {
         console.error("Erro ao copiar:", err);
@@ -115,6 +117,13 @@ function ChatScreen() {
 
   return (
     <div className="health-screen">
+      {/* Mensagem de Copiado */}
+      {showCopiedMessage && (
+        <div className="copy-success-message">
+          ✓ Texto copiado!
+        </div>
+      )}
+      
       {/* Header */}
       <header className="health-header">
         <button className="back-btn" aria-label="Back" onClick={() => navigate(-1)}>←</button>
