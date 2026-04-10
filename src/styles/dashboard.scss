@@ -1,0 +1,298 @@
+@import './variables';
+
+// Dashboard (HealthScreen)
+.health-screen {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #f7f8fa;
+  padding-bottom: 70px; // Espaço para bottom navigation
+  overflow-y: auto;
+}
+
+.dashboard-header {
+  padding: 32px 24px 24px;
+  background: linear-gradient(135deg, #4F46E5 0%, #6366F1 100%);
+  border-radius: 0 0 24px 24px;
+  color: white;
+
+  .dashboard-greeting {
+    .greeting-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 0 0 8px 0;
+      color: white;
+    }
+
+    .greeting-subtitle {
+      font-size: 15px;
+      margin: 0;
+      opacity: 0.9;
+      color: white;
+    }
+  }
+}
+
+.dashboard-main {
+  flex: 1;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+// Featured Card (Iniciar Conversa)
+.featured-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.15);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  .featured-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: white;
+
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  .featured-content {
+    flex: 1;
+
+    .featured-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #23262f;
+      margin: 0 0 4px 0;
+    }
+
+    .featured-description {
+      font-size: 14px;
+      color: #8e9295;
+      margin: 0;
+    }
+  }
+
+  .featured-arrow {
+    color: #8e9295;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+
+  &:hover .featured-arrow {
+    transform: translateX(4px);
+  }
+}
+
+// Quick Actions Section
+.dashboard-section {
+  .section-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #23262f;
+    margin: 0 0 16px 0;
+  }
+}
+
+.quick-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.quick-action-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+  min-height: 120px;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  .action-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .action-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #23262f;
+    margin: 0;
+  }
+
+  .action-description {
+    font-size: 13px;
+    color: #8e9295;
+    margin: 0;
+    line-height: 1.4;
+  }
+}
+
+// Info Card
+.dashboard-info-card {
+  background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+
+  .info-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+  }
+
+  .info-content {
+    flex: 1;
+
+    .info-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #92400E;
+      margin: 0 0 6px 0;
+    }
+
+    .info-text {
+      font-size: 14px;
+      color: #78350F;
+      margin: 0;
+      line-height: 1.5;
+    }
+  }
+}
+
+// Mobile adjustments
+@media (max-width: 414px) {
+  .dashboard-header {
+    padding: 24px 20px 20px;
+
+    .dashboard-greeting {
+      .greeting-title {
+        font-size: 24px;
+      }
+
+      .greeting-subtitle {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .dashboard-main {
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .featured-card {
+    padding: 16px;
+
+    .featured-icon {
+      width: 48px;
+      height: 48px;
+
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    .featured-content {
+      .featured-title {
+        font-size: 16px;
+      }
+
+      .featured-description {
+        font-size: 13px;
+      }
+    }
+  }
+
+  .quick-action-card {
+    padding: 16px 12px;
+    min-height: 110px;
+
+    .action-icon {
+      width: 44px;
+      height: 44px;
+    }
+
+    .action-title {
+      font-size: 15px;
+    }
+
+    .action-description {
+      font-size: 12px;
+    }
+  }
+
+  .dashboard-info-card {
+    padding: 16px;
+
+    .info-icon {
+      font-size: 28px;
+    }
+
+    .info-content {
+      .info-title {
+        font-size: 15px;
+      }
+
+      .info-text {
+        font-size: 13px;
+      }
+    }
+  }
+}

@@ -103,6 +103,16 @@ function ChatScreen() {
     }
   }, [input, isLoading, chatbotService]);
 
+  const handleCopy = useCallback((text: string) => {
+    navigator.clipboard.writeText(text)
+      .then(() => {
+        alert("Texto copiado!");
+      })
+      .catch((err) => {
+        console.error("Erro ao copiar:", err);
+      });
+  }, []);
+
   return (
     <div className="health-screen">
       {/* Header */}
@@ -181,8 +191,13 @@ function ChatScreen() {
                 <div className="chat-bubble">
                   <div className="chat-text">{msg.text}</div>
                   <div className="chat-actions">
-                    <button className="chat-action-btn" title="Copiar">📋</button>
-                    <button className="chat-action-btn" title="Compartilhar">🔗</button>
+                    <button 
+                      className="chat-action-btn" 
+                      title="Copiar"
+                      onClick={() => handleCopy(msg.text)}
+                    >
+                      📋
+                    </button>
                   </div>
                 </div>
               </div>
@@ -200,10 +215,6 @@ function ChatScreen() {
             
             {/* Auto-scroll ref */}
             <div ref={messagesEndRef} />
-            
-            <div className="chat-regen-container">
-              <button className="chat-regen-btn">Regenerate Response</button>
-            </div>
           </div>
         )}
       </main>

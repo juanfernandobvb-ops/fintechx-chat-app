@@ -5,7 +5,7 @@ import { useNavigation } from '../../hooks/useNavigation';
 function SplashScreen() {
   const { goToOnboarding } = useNavigation();
   const [progress, setProgress] = useState(0);
-  const LOADING_TIME = 4000; // 4 segundos
+  const LOADING_TIME = 2000; // 2 segundos
 
   useEffect(() => {
     // Incrementar progresso gradualmente
@@ -15,11 +15,11 @@ function SplashScreen() {
           clearInterval(progressInterval);
           return 100;
         }
-        return prev + 2; // Incrementa 2% a cada ~80ms (100 / 2 * 80 ≈ 4000ms)
+        return prev + 2; // Incrementa 2% a cada ~40ms (100 / 2 * 40 ≈ 2000ms)
       });
-    }, 80);
+    }, 40);
 
-    // Navegar automaticamente após 4 segundos
+    // Navegar automaticamente após 2 segundos
     const navigationTimer = setTimeout(() => {
       goToOnboarding();
     }, LOADING_TIME);

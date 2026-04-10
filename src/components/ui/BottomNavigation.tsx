@@ -28,7 +28,6 @@ function BottomNavigation() {
         className={`nav-tab ${activeTab === 'home' ? 'active' : ''}`}
         onClick={goToChat}
         aria-label="Chat"
-        title="Chat"
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
           <path 
@@ -40,14 +39,13 @@ function BottomNavigation() {
             fill={activeTab === 'home' ? 'currentColor' : 'none'}
           />
         </svg>
-        {activeTab === 'home' && <span className="active-indicator"></span>}
+        <span className="nav-label">Chat</span>
       </button>
 
       <button 
         className={`nav-tab ${activeTab === 'explore' ? 'active' : ''}`}
         onClick={goToHealth}
-        aria-label="Health"
-        title="Health"
+        aria-label="Home"
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
           <rect 
@@ -87,26 +85,13 @@ function BottomNavigation() {
             fill={activeTab === 'explore' ? 'currentColor' : 'none'}
           />
         </svg>
-        {activeTab === 'explore' && <span className="active-indicator"></span>}
-      </button>
-
-      <button 
-        className={`nav-tab ${activeTab === 'history' ? 'active' : ''}`}
-        aria-label="History"
-        title="History (Em breve)"
-        disabled
-      >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
-          <path d="M12 6V12L16 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-        </svg>
+        <span className="nav-label">Home</span>
       </button>
 
       <button 
         className={`nav-tab ${activeTab === 'profile' ? 'active' : ''}`}
         onClick={goToProfile}
-        aria-label="Profile"
-        title="Profile"
+        aria-label="Perfil"
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
           <circle 
@@ -125,7 +110,7 @@ function BottomNavigation() {
             strokeLinecap="round"
           />
         </svg>
-        {activeTab === 'profile' && <span className="active-indicator"></span>}
+        <span className="nav-label">Perfil</span>
       </button>
     </nav>
   );
