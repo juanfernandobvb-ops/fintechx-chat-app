@@ -1,7 +1,10 @@
 import { createContext, useContext, useReducer, type ReactNode } from 'react';
 import type { ChatState, ChatContextType, Message } from '../types';
-import { ChatService } from '../services/chat-service';
+import { createChatbotService } from '../services';
 import { generateId } from '../utils';
+
+// Criar instância única do chatbot service
+const chatbotService = createChatbotService();
 
 type ChatAction =
   | { type: 'ADD_MESSAGE'; payload: Message }
@@ -66,12 +69,7 @@ export function ChatProvider({ children }: { children: ReactNode }) {
     dispatch({ type: 'SET_ERROR', payload: null });
 
     try {
-      const conversationHistory = state.messages.map(msg => ({
-        role: msg.role,
-        content: msg.content,
-      }));
-
-      const response = await ChatService.sendMessage(content, conversationHistory);
+      const response = await chatbotService.sendMessage(content);
 
       const assistantMessage: Message = {
         id: generateId(),
