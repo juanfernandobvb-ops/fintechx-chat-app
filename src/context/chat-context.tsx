@@ -79,7 +79,8 @@ export function ChatProvider({ children }: { children: ReactNode }) {
       };
 
       dispatch({ type: 'ADD_MESSAGE', payload: assistantMessage });
-    } catch (error) {
+    } catch {
+      // Erro capturado - mostramos mensagem genérica ao usuário
       dispatch({ type: 'SET_ERROR', payload: 'Erro ao enviar mensagem. Tente novamente.' });
     } finally {
       dispatch({ type: 'SET_LOADING', payload: false });
@@ -97,6 +98,9 @@ export function ChatProvider({ children }: { children: ReactNode }) {
   );
 }
 
+// Hook para usar o ChatContext
+// Nota: Fast Refresh warning é esperado (componente + hook no mesmo arquivo)
+// mas não afeta funcionalidade em produção
 export function useChat() {
   const context = useContext(ChatContext);
   if (context === undefined) {

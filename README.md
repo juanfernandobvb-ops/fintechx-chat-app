@@ -1,24 +1,36 @@
 # FinTechX Chat Inteligente 💬
 
-Um assistente virtual moderno para a FinTechX, desenvolvido com React, TypeScript e integração com OpenAI GPT.
+Um assistente virtual moderno para a FinTechX, desenvolvido com React, TypeScript e integração com Google Gemini AI.
 
-![React](https://img.shields.io/badge/React-18.3.1-blue.svg)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.5-blue.svg)
-![SCSS](https://img.shields.io/badge/SCSS-1.80-pink.svg)
-![Vite](https://img.shields.io/badge/Vite-6.0-646CFF.svg)
+![React](https://img.shields.io/badge/React-19.2-61DAFB.svg)
+![TypeScript](https://img.shields.io/badge/TypeScript-6.0-blue.svg)
+![SCSS](https://img.shields.io/badge/SCSS-Modular-pink.svg)
+![Vite](https://img.shields.io/badge/Vite-8.0-646CFF.svg)
+![Deploy](https://img.shields.io/badge/deploy-Vercel-success.svg)
+
+> 🚀 **Desenvolvido em 2 dias para case técnico**
 
 ## 🎯 **Sobre o Projeto**
 
 Interface de chat inteligente desenvolvida para aprimorar a comunicação e suporte ao cliente da FinTechX. O assistente responde automaticamente às dúvidas dos clientes em tempo real usando linguagem natural.
 
+## 🌐 **Deploy em Produção**
+
+🚀 **Aplicação rodando**: [fintechx-chat-app.vercel.app](https://fintechx-chat-app.vercel.app)
+
+> Deploy automático via Vercel com CI/CD integrado
+
 ### **Funcionalidades Principais**
 
-- 🤖 **Chat IA Inteligente** - Powered by OpenAI GPT-3.5 Turbo
-- 📱 **Design Responsivo** - Mobile-first approach
-- ⚡ **Performance Otimizada** - Vite + React 18
-- 🎨 **Design System** - Componentes reutilizáveis com SCSS
-- 🔒 **TypeScript** - Type safety e melhor DX
-- 🌟 **UX Moderna** - Animações e micro-interações
+- 🤖 **Chat IA Inteligente** - Powered by Google Gemini Pro
+- 💬 **FAQ-First Architecture** - Respostas instantâneas sem latência de API
+- 📱 **Design Responsivo** - Mobile-first com UX polida
+- ⚡ **Performance Otimizada** - Vite 8 + React 19
+- 🎨 **Design System Completo** - SCSS modular com variáveis
+- 🔒 **TypeScript 100%** - Type safety em todo código
+- 🌟 **UX Moderna** - Animações, loading states, feedback visual
+- 💾 **Persistência Local** - localStorage para perfil do usuário
+- 🗂️ **Múltiplas Telas** - Onboarding, Chat, Dashboard, Perfil
 
 ### **Base de Conhecimento**
 
@@ -35,13 +47,13 @@ O assistente pode responder sobre:
 ### **Pré-requisitos**
 - Node.js 18+ 
 - npm ou yarn
-- Chave API OpenAI
+- Chave API do Google AI Studio (Gemini)
 
 ### **Instalação**
 
 ```bash
-# Clone o repositório (substitua pela URL real)
-git clone [REPOSITORY_URL]
+# Clone o repositório
+git clone https://github.com/juanfernandobvb-ops/fintechx-chat-app.git
 cd projeto-case
 
 # Instale as dependências
@@ -49,16 +61,17 @@ npm install
 
 # Configure as variáveis de ambiente
 cp .env.example .env
-# Edite o .env e adicione sua VITE_OPENAI_API_KEY
+# Edite o .env e adicione sua VITE_GEMINI_API_KEY
 ```
 
 ### **Configuração da API**
 
-1. Obtenha sua chave da OpenAI em: https://platform.openai.com/api-keys
-2. Adicione no arquivo `.env`:
+1. Obtenha sua chave do Google AI Studio: https://makersuite.google.com/app/apikey
+2. Crie/edite o arquivo `.env`:
 
 ```env
-VITE_OPENAI_API_KEY=sk-your-openai-api-key-here
+VITE_GEMINI_API_KEY=AIzaSy...sua_key_aqui
+VITE_GEMINI_MODEL=gemini-pro
 ```
 
 ### **Executar em Desenvolvimento**
@@ -84,25 +97,32 @@ npm run preview
 
 ```
 src/
-├── components/          # Componentes React
-│   └── ui/             # Componentes base do design system
-├── context/            # Context API para gerenciamento de estado
-├── data/              # Dados estáticos (informações FinTechX)
-├── hooks/             # Custom React hooks  
-├── services/          # Integração com APIs externas
-├── types/             # Definições TypeScript
-└── utils/             # Funções utilitárias
+├── components/
+│   ├── screens/        # Telas principais (Chat, Profile, Dashboard, etc.)
+│   └── ui/             # Componentes reutilizáveis (Button, Input, Modal, etc.)
+├── context/            # ChatProvider, UserProvider (Context API)
+├── data/               # FAQ e informações da FinTechX
+├── hooks/              # useNavigation, useUser (custom hooks)
+├── services/
+│   ├── llm/            # LLMProvider (abstração), GeminiProvider
+│   ├── faq/            # FAQService (respostas instantâneas)
+│   └── chatbot/        # ChatbotService (orquestrador FAQ + LLM)
+├── styles/             # SCSS modular (variables, components, screens)
+├── types/              # Interfaces TypeScript
+└── utils/              # Funções utilitárias
 ```
 
 ## 🛠️ **Stack Tecnológica**
 
-- **Frontend**: React 18 + TypeScript
-- **Build Tool**: Vite 6
-- **Styling**: SCSS com variáveis customizadas
-- **AI**: OpenAI GPT-3.5 Turbo
-- **Icons**: Lucide React
-- **State**: Context API
-- **Linting**: ESLint + Prettier
+- **Frontend**: React 19.2 + TypeScript 6.0
+- **Build Tool**: Vite 8.0
+- **Routing**: React Router DOM 7.14
+- **Styling**: SCSS com design system modular
+- **AI**: Google Gemini Pro (via Google AI Studio)
+- **State Management**: Context API (ChatProvider, UserProvider)
+- **Storage**: localStorage (persistência de perfil)
+- **Linting**: ESLint 9 + TypeScript ESLint
+- **Deploy**: Vercel (CI/CD automático)
 
 ## 📋 **Scripts Disponíveis**
 
@@ -115,26 +135,46 @@ src/
 
 ## 🚀 **Deploy**
 
-### **Vercel (Recomendado)**
+A aplicação está configurada para deploy automático no Vercel.
 
-```bash
-# Instalar Vercel CLI
-npm i -g vercel
+### **Deploy Atual**
+- URL: https://fintechx-chat-app.vercel.app
+- Status: ✅ Produção
+- CI/CD: Automático via Git push
 
-# Deploy
-vercel
+### **Configurar no Vercel**
 
-# Em produção, configure as variáveis de ambiente no dashboard Vercel
-```
+1. Conecte o repositório GitHub no Vercel
+2. Configure a variável de ambiente:
+   ```
+   VITE_GEMINI_API_KEY=sua_chave_aqui
+   ```
+3. Deploy automático a cada push na branch `main`
 
-### **Netlify**
+## 🧠 **Decisões Técnicas**
 
-```bash
-# Build local
-npm run build
+### Por que Gemini API?
+- ✅ **Gratuito** com limites generosos (60 req/min)
+- ✅ **Excelente em português** brasileiro
+- ✅ **Performance** comparável ao GPT-3.5
+- ✅ **Latência baixa** (~1-2s por resposta)
 
-# Upload da pasta dist/ no Netlify
-```
+### Arquitetura FAQ-First
+- ⚡ **Respostas instantâneas** para perguntas comuns (sem latência)
+- 💰 **Redução de custos** (~70% das perguntas são FAQ)
+- 🎯 **Fallback inteligente** para LLM quando necessário
+- ✅ **Validação de escopo** (rejeita perguntas fora da FinTechX)
+
+### Abstração LLMProvider
+- 🔄 **Fácil troca de provider** (Gemini → OpenAI em 2 linhas)
+- 🧪 **Testável** e **manutenível**
+- 📈 **Preparado para escalar** (adicionar novos providers)
+
+### Context API vs Redux
+- ✅ Suficiente para escopo do projeto
+- ✅ Menos boilerplate e setup
+- ✅ Performance adequada com `useCallback`/`useMemo`
+- ✅ Mais rápido de implementar (2 dias de prazo)
 
 ## 🤝 **Contribuição**
 
@@ -146,44 +186,41 @@ npm run build
 
 ## 📝 **Licença**
 
-Este projeto foi desenvolvido como parte de um teste técnico para a **Laborit**.
+Este projeto foi desenvolvido como parte de um case técnico para a **Laborit**.
+
+## 📊 **Contexto de Desenvolvimento**
+
+⏱️ **Tempo de desenvolvimento**: 2 dias  
+🎯 **Objetivo**: Case técnico para vaga de desenvolvedor  
+✅ **Entregas**: Aplicação funcional + Deploy + Documentação
+
+### O que foi priorizado:
+- ✅ Funcionalidades completas e testadas manualmente
+- ✅ UX polida com animações e feedback visual
+- ✅ Arquitetura escalável e bem organizada
+- ✅ Código limpo com TypeScript 100%
+- ✅ Deploy em produção funcionando
+
+### Diferenciais implementados:
+- ✅ Sistema de FAQ inteligente (reduz custos de API)
+- ✅ Abstração de LLM (fácil trocar provider)
+- ✅ Múltiplas telas funcionais (10+ screens)
+- ✅ Persistência de dados (localStorage)
+- ✅ Design system modular e consistente
 
 ## 👥 **Contato**
 
-- **Desenvolvedor**: Juan
-- **Empresa**: Case Técnico - Laborit
-- **Email**: [Seu email aqui]
+- **Desenvolvedor**: Juan Fernando
+- **Case**: Laborit - Desenvolvedor Frontend
+- **Repositório**: https://github.com/juanfernandobvb-ops/fintechx-chat-app
 
 ---
 
 ### **Notas Técnicas**
 
-- ⚠️ **Produção**: Remover `dangerouslyAllowBrowser: true` da configuração OpenAI
-- 🔐 **Segurança**: Implementar proxy backend para APIs em produção
-- 🧪 **Testes**: Estrutura preparada para Jest + React Testing Library
-- 📊 **Monitoramento**: Pronto para integração com Analytics
+- 📚 **Documentação completa**: Veja `/docs/LLM_INTEGRATION.md` para detalhes da integração
+- 🔐 **Segurança**: API key configurada via variáveis de ambiente (não commitada)
+- 🧪 **Testes**: Estrutura preparada para Vitest/Jest (não implementado por priorização de tempo)
+- 📊 **CI/CD**: Vercel com deploy automático a cada push
 
 **Desenvolvido com ❤️ para o Case Técnico Laborit**
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```

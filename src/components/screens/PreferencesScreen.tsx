@@ -29,14 +29,14 @@ function PreferencesScreen() {
           icon={<PasswordIcon />}
           title="Password"
           subtitle="Change your Password"
-          onClick={() => console.log('Password clicked')}
+          onClick={() => {}}
         />
 
         <PreferenceItem
           icon={<PaymentIcon />}
           title="Payment Methods"
           subtitle="Add Your Credit / Credit Cards"
-          onClick={() => console.log('Payment Methods clicked')}
+          onClick={() => {}}
         />
 
         <PreferenceItem
@@ -50,7 +50,7 @@ function PreferencesScreen() {
           icon={<ThemeIcon />}
           title="Theme Colour"
           subtitle="Change Your Theme Colour"
-          onClick={() => console.log('Theme Colour clicked')}
+          onClick={() => {}}
         />
       </div>
     </div>

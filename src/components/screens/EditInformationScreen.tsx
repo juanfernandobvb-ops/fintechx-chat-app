@@ -23,8 +23,6 @@ function EditInformationScreen() {
       email: email.trim() || userData.email,
     });
     
-    console.log('Changes saved:', { fullName, email });
-    
     // Voltar para a tela anterior
     goBack();
   };

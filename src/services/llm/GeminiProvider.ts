@@ -57,11 +57,6 @@ export class GeminiProvider implements LLMProvider {
       // Gemini não tem role "system", então incluímos no primeiro user message
       const contents = this.buildContentsWithSystem(message, systemPrompt, conversationHistory);
 
-      console.log('Gemini API Request:', {
-        url: `${this.apiUrl}?key=${this.apiKey.substring(0, 10)}...`,
-        contentsLength: contents.length,
-      });
-
       const response = await fetch(`${this.apiUrl}?key=${this.apiKey}`, {
         method: 'POST',
         headers: {
@@ -76,8 +71,6 @@ export class GeminiProvider implements LLMProvider {
         }),
       });
 
-      console.log('Gemini API Response Status:', response.status);
-
       if (!response.ok) {
         const errorText = await response.text();
         console.error('Gemini API Error Response:', errorText);
@@ -85,10 +78,6 @@ export class GeminiProvider implements LLMProvider {
       }
 
       const data = await response.json();
-      console.log('Gemini API Success:', {
-        hasCandidates: !!data.candidates,
-        candidatesLength: data.candidates?.length,
-      });
 
       const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
 

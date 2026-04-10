@@ -11,7 +11,6 @@ function ProfileScreen() {
 
   const handleLogout = () => {
     // Logout: redireciona para a tela inicial
-    console.log('Logout clicked - Redirecionando para Splash Screen');
     goToSplash();
   };
 
@@ -56,7 +55,7 @@ function ProfileScreen() {
           title="Account Security"
           hasArrow
           showSecurityLevel
-          onClick={() => console.log('Account Security clicked')}
+          onClick={() => {}}
         />
 
         <MenuItem
