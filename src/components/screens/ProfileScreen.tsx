@@ -1,15 +1,22 @@
+import { useState } from 'react';
 import { useNavigation } from '../../hooks/useNavigation';
 import { useUser } from '../../context/user-context';
+import CustomerSupportModal from '../ui/CustomerSupportModal';
 import UserAvatar from '../../assets/user.svg';
 
 function ProfileScreen() {
   const { goToChat, goToSplash, goToPreferences } = useNavigation();
   const { userData } = useUser();
+  const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
 
   const handleLogout = () => {
     // Logout: redireciona para a tela inicial
     console.log('Logout clicked - Redirecionando para Splash Screen');
     goToSplash();
+  };
+
+  const handleSupportClick = () => {
+    setIsSupportModalOpen(true);
   };
 
   return (
@@ -56,7 +63,7 @@ function ProfileScreen() {
           icon={<SupportIcon />}
           title="Customer Support"
           hasArrow
-          onClick={() => console.log('Customer Support clicked')}
+          onClick={handleSupportClick}
         />
 
         <MenuItem
@@ -65,6 +72,12 @@ function ProfileScreen() {
           onClick={handleLogout}
         />
       </div>
+
+      {/* Customer Support Modal */}
+      <CustomerSupportModal 
+        isOpen={isSupportModalOpen} 
+        onClose={() => setIsSupportModalOpen(false)} 
+      />
     </div>
   );
 }

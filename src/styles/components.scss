@@ -69,6 +69,8 @@
   .splash-footer {
     text-align: center;
     margin-bottom: $spacing-xl;
+    width: 100%;
+    max-width: 320px;
 
     .splash-title {
       font-size: 2rem;
@@ -80,8 +82,36 @@
     .splash-version {
       font-size: 1rem;
       color: color.adjust($gray-800, $lightness: 20%);
-      margin: 0;
+      margin: 0 0 $spacing-lg 0;
       font-weight: 400;
+    }
+
+    .splash-loading {
+      margin-top: $spacing-lg;
+
+      .loading-bar-container {
+        width: 100%;
+        height: 4px;
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 2px;
+        overflow: hidden;
+        margin-bottom: $spacing-sm;
+
+        .loading-bar-fill {
+          height: 100%;
+          background: linear-gradient(90deg, $primary-color 0%, color.adjust($primary-color, $lightness: 10%) 100%);
+          border-radius: 2px;
+          transition: width 0.1s linear;
+        }
+      }
+
+      .loading-text {
+        font-size: 0.875rem;
+        color: color.adjust($gray-800, $lightness: 20%);
+        margin: 0;
+        font-weight: 400;
+        opacity: 0.8;
+      }
     }
   }
 }
